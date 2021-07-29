@@ -1,0 +1,7 @@
+*.zst
+/scratch
+/info
+*.img
+*.log
+*.run
+*.iso
