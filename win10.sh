@@ -68,7 +68,6 @@ unshield() {
 }
 
 utils/vfio.sh unbind '0000:2d:00.3' '1022 149c' # pass through usb3 controller
-sudo sysctl vm.nr_hugepages=16                  # allocate 16GB of hugepages
 
 msg "Starting VM $vmname from $(pwd)"
 if [ -z "$use_shield" ]; then
@@ -116,7 +115,6 @@ $cmd \
   2>&1 | tee -a "${vmname}.log" || msg "VM $vmname terminated unexpectedly"
 
 utils/vfio.sh bind '0000:2d:00.3' '1022 149c' # return usb3 controller to linux
-sudo sysctl vm.nr_hugepages=0                 # free up ram
 [ -z "$use_shield" ] || unshield
 
 exit
